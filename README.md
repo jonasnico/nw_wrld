@@ -69,6 +69,8 @@ Two windows will open:
 - **Dashboard**: Control center for creating tracks, programming patterns, and configuring visuals
 - **Projector**: Visual output window
 
+`npm start` compiles runtime TypeScript, starts webpack in watch mode, and opens Electron after the first successful renderer build. It does not start an HTTP server or use port 9000. Renderer edits rebuild the local bundles; restarting the app is still required to load rebuilt application code. Project-folder module hot reload is unchanged. `npm run serve` runs the renderer watcher without opening Electron.
+
 ---
 
 ## E2E Testing (Playwright)

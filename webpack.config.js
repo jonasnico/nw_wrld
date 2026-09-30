@@ -74,22 +74,6 @@ module.exports = (env, argv) => {
       ],
     },
     plugins: [],
-    devServer: {
-      static: path.join(__dirname, "dist"),
-      compress: true,
-      port: 9000,
-      hot: true,
-      liveReload: false,
-      devMiddleware: {
-        writeToDisk: true,
-      },
-      watchFiles: {
-        paths: ["src/**/*"],
-        options: {
-          ignored: /src\/shared\/json\/userData\.json$/,
-        },
-      },
-    },
     watchOptions: {
       ignored: /src\/shared\/json\/userData\.json$/,
     },

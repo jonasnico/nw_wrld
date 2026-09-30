@@ -376,7 +376,7 @@ $: note(r).midi("MIDI_port_name").midichan(1); // send to MIDI_port_name channel
 
 **App won't start (development setup):**
 
-- Close other dev servers using port 9000
+- Check the terminal for TypeScript or renderer build errors. Electron opens only after a successful initial build; no development-server port is required.
 - Run `npm install` again
 - Check Node.js version: `node --version` (minimum 22.12.0; Node.js 24 LTS recommended)
 
