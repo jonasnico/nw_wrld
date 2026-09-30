@@ -4,8 +4,8 @@ nw_wrld is an event-driven sequencer for triggering visuals using web technologi
 
 Visuals can be triggered via the built-in 16-step sequencer or by configuring external MIDI, OSC, audio capture, or file-upload inputs.
 
-![Node Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)
-![Electron](https://img.shields.io/badge/electron-v39.8.10-blue)
+![Node Version](https://img.shields.io/badge/node-%3E%3D22.12.0-brightgreen)
+![Electron](https://img.shields.io/badge/electron-v44.4.5-blue)
 
 <img width="1512" height="901" alt="Screenshot 2026-01-09 at 14 17 49" src="https://github.com/user-attachments/assets/9d59fe7d-cc3b-48ec-af11-007a9379cac5" />
 
@@ -48,7 +48,9 @@ This project is currently in beta. Downloadable installers are provided via GitH
 
 Build from source to contribute or customize:
 
-**Prerequisites:** Node.js v20+ and basic terminal knowledge
+**Prerequisites:** Node.js 24 LTS (recommended; minimum 22.12.0) and basic terminal knowledge. Node.js 26 is also supported.
+
+Electron 44 requires macOS 13 or newer and 64-bit Windows/Linux. Windows x86 (32-bit) and Linux ARMv7 are no longer supported. The native project-folder picker now initially opens in Downloads (or the home directory if Downloads is unavailable).
 
 ```bash
 # 1. Clone the repository
@@ -76,6 +78,7 @@ npm run test:e2e
 ```
 
 - E2E tests launch the real Electron app and control the windows via Playwright.
+- Each test starts its own app instance; a full run launches Electron repeatedly. The command downloads the Electron binary if needed before launching tests.
 - Test artifacts (screenshots/traces on failure) are written to `test-results/` (gitignored).
 - Tests can boot into an isolated project folder by setting `NW_WRLD_TEST_PROJECT_DIR`.
 

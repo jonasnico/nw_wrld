@@ -78,7 +78,7 @@ Documentation improvements are always welcome:
 
 ### Prerequisites
 
-- Node.js v20 or higher
+- Node.js 24 LTS recommended (minimum 22.12.0; Node.js 26 also supported)
 - Git
 - A code editor (VS Code recommended)
 - Basic familiarity with JavaScript
@@ -364,7 +364,7 @@ A good bug report includes:
 
 ```
 - OS: macOS 13.2 / Windows 11
-- Node version: 20.x.x
+- Node version: 24.x.x
 - App version: 0.5.0-beta
 ```
 

@@ -24,7 +24,7 @@ This guide covers installation, setup, and basic usage of nw_wrld.
 
 ## Installation
 
-**Requirements:** Node.js v20+ and basic terminal knowledge
+**Requirements:** Node.js 24 LTS (recommended; minimum 22.12.0), macOS 13+ or 64-bit Windows/Linux, and basic terminal knowledge. Node.js 26 is also supported.
 
 To clone the repository, install dependencies, start the app, and learn what the two windows are, follow the [Installation (For Developers)](README.md#for-developers) section in the README.
 
@@ -378,7 +378,7 @@ $: note(r).midi("MIDI_port_name").midichan(1); // send to MIDI_port_name channel
 
 - Close other dev servers using port 9000
 - Run `npm install` again
-- Check Node.js version: `node --version` (should be v20+)
+- Check Node.js version: `node --version` (minimum 22.12.0; Node.js 24 LTS recommended)
 
 ### Linux/WSL Issues
 
