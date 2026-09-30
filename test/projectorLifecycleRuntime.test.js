@@ -171,7 +171,7 @@ const createPreviewControllerHarness = () => {
   return { ...moduleExports, dashboardMessages };
 };
 
-const createWindowsHarness = () => {
+const createWindowsHarness = (platform = process.platform) => {
   const browserWindows = [];
   const attachCalls = [];
   const shellOpenExternalCalls = [];
@@ -339,6 +339,7 @@ const createWindowsHarness = () => {
       updateSandboxViewBounds: () => {},
     },
   }, {
+    process: { ...process, platform },
     setTimeout: fakeSetTimeout,
     clearTimeout: fakeClearTimeout,
   });
@@ -495,6 +496,16 @@ test("projector recovery timer does not recreate a window after shutdown starts"
   assert.equal(state.projector1Window, null);
   assert.deepEqual(attachCalls, [null]);
   assert.equal(pendingTimers.length, 0);
+});
+
+test("projector keeps square Linux corners without changing other platforms", () => {
+  for (const platform of ["linux", "darwin", "win32"]) {
+    const { createWindow, browserWindows } = createWindowsHarness(platform);
+    createWindow("/tmp/workspace");
+    const projector = browserWindows.find((win) => win.title === "Projector 1");
+    assert.equal(projector.options.roundedCorners, platform === "linux" ? false : undefined);
+    assert.equal("enableRemoteModule" in projector.options.webPreferences, false);
+  }
 });
 
 test("createWindow denies new windows and blocks external navigation on both windows", () => {

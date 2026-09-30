@@ -3,19 +3,21 @@ import { clipboard, ipcMain, shell } from "electron";
 import { normalizeOpenExternalUrl } from "../../../shared/validation/openExternalValidation";
 
 export function registerOsBridge(): void {
-  ipcMain.on("bridge:os:clipboardWriteText", (event, text) => {
+  ipcMain.on("bridge:os:clipboardWriteText", async (event, text) => {
     try {
-      clipboard.writeText(String(text ?? ""));
+      await clipboard.writeText(String(text ?? ""));
       event.returnValue = true;
-    } catch {
+    } catch (error) {
+      console.error("[Main] Clipboard write failed:", error);
       event.returnValue = false;
     }
   });
 
-  ipcMain.on("bridge:os:clipboardReadText", (event) => {
+  ipcMain.on("bridge:os:clipboardReadText", async (event) => {
     try {
-      event.returnValue = clipboard.readText();
-    } catch {
+      event.returnValue = await clipboard.readText();
+    } catch (error) {
+      console.error("[Main] Clipboard read failed:", error);
       event.returnValue = "";
     }
   });
@@ -34,4 +36,3 @@ export function registerOsBridge(): void {
     }
   });
 }
-

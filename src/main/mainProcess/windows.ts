@@ -296,7 +296,6 @@ const createProjectorWindow = (projectDir: string | null): BrowserWindow => {
       nodeIntegration: false,
       contextIsolation: true,
       preload: path.join(srcDir, "..", "dist", "runtime", "preload.js"),
-      enableRemoteModule: false,
       backgroundThrottling: false,
       webgl: true,
       enableHardwareAcceleration: true,
@@ -312,6 +311,7 @@ const createProjectorWindow = (projectDir: string | null): BrowserWindow => {
     show: false,
     paintWhenInitiallyHidden: true,
     frame: false,
+    ...(process.platform === "linux" ? { roundedCorners: false } : {}),
   });
 
   hardenWindowNavigation(projectorWindow);

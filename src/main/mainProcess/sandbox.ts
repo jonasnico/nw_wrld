@@ -192,7 +192,6 @@ const ensureSandboxView = (projectDir: string | null): unknown | null => {
       contextIsolation: true,
       sandbox: true,
       preload: path.join(srcDir, "..", "dist", "runtime", "sandboxPreload.js"),
-      enableRemoteModule: false,
       backgroundThrottling: false,
       webgl: true,
       enableHardwareAcceleration: true,
